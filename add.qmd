@@ -9,4 +9,4 @@ My favorite is probably Multiclass Logistic Regression because I find it very in
 
 According to numpy.org, "NumPy is the fundamental package for scientific computing in Python. It is a Python library that provides a multidimensional array object, various derived objects (such as masked arrays and matrices), and an assortment of routines for quick operations on arrays, including mathematical, logical, shape manipulation, sorting, selecting, I/O, discrete Fourier transforms, basic linear algebra, basic statistical operations, random simulation and much more."
 
-Another frequently used package for machine learning is Tensorflow.
+According to tensorflow.org, "The TensorFlow platform helps you implement best practices for data automation, model tracking, performance monitoring, and model retraining. Using production-level tools to automate and track model training over the lifetime of a product, service, or business process is critical to success."
