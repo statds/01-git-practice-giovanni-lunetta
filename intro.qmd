@@ -77,6 +77,10 @@ order). Add yours; note the syntax of nested list in Markdown.
 + Yan, Jun
     - Make data science more accessible to undergraduates
     - Co-develop a Quarto Book in collaboration with the students
++ Lunetta, Giovanni
+   - Complete the course with an A and hopefully pursue the Data Science Master's Program at UConn
+   - Become proficient in building a machine learning model and properly interpreting the results
+
 
 ### Presentation Orders
 
