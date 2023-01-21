@@ -1,0 +1,8 @@
+# Create a new file called add.qmd containing a few lines of texts; commit.
+
+There are many common machine learning models that I have some backround in using.
+This includes:
+1. Linear regression
+1. Logistic Regression
+1. Multiclass Logistic Regression
+My favorite is probably Multiclass Logistic Regression because I find it very interesting how a machine learning model can correctly create the proper thresholds.
