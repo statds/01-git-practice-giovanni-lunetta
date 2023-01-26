@@ -64,3 +64,52 @@ print("percent of the time and the wrong choice", 100-win3, "percent of the time
 print("When there are five doors, switching the door is the correct choice", win5)
 print("percent of the time and the wrong choice", 100-win5, "percent of the time.")
 ```
+
+# Exercise 4
+Monte Carlo approximation of pi.
+```{python}
+# allows us to generate random numbers and make random selections
+import random
+
+# defines a function called monte_carlo_pi which takes one
+# argument, n, which is the sample size
+def monte_carlo_pi(n):
+
+    # initializes a variable to keep track of the number of points
+    #  that fall inside the unit circle
+    inside = 0
+
+    # starts a for loop that will run n times
+    for i in range(n):
+        # generates a random float number between -1 and 1 and assigns 
+        # it to the variable x and y.
+        x = random.uniform(-1, 1)
+        y = random.uniform(-1, 1)
+
+        # checks if the point (x, y) falls within the unit circle. 
+        # If it does, increment the "inside" variable by 1
+        if x**2 + y**2 <= 1:
+            inside += 1
+    
+    # estimates pi by calculating the ratio of points inside the unit circle
+    # to the total number of points generated. The result is multiplied by 4 
+    # to account for the quarter of the unit circle that is being approximated.        
+    pi_estimate = 4 * inside / n
+
+    # calculates the standard deviation of the pi estimate, and multiply by 
+    # 1.96 which corresponds to the 95% of confidence interval.
+    pi_error = 1.96 * (4 * inside / n * (1 - inside / n) / n)**0.5
+
+    # returns the estimate of pi and the 95% confidence interval as a tuple.
+    return pi_estimate, (pi_estimate - pi_error, pi_estimate + pi_error)
+
+print("Displayed is the estimate, followed by the 95% confidence interval")
+print("with a sample size of 1000:", monte_carlo_pi(1000))
+print("Displayed is the estimate, followed by the 95% confidence interval")
+print("with a sample size of 2000:", monte_carlo_pi(2000))
+print("Displayed is the estimate, followed by the 95% confidence interval")
+print("with a sample size of 4000:", monte_carlo_pi(4000))
+print("Displayed is the estimate, followed by the 95% confidence interval")
+print("with a sample size of 8000:", monte_carlo_pi(8000))
+```
+
