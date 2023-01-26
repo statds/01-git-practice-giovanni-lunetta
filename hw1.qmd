@@ -16,19 +16,51 @@ jupyter: python3
 Monty Hall problem through simulation.
 
 ```{python}
-#| label: fig-polar
-#| fig-cap: "A line plot on a polar axis"
+# allows us to generate random numbers and make random selections
+import random
 
-import numpy as np
-import matplotlib.pyplot as plt
+# defines a function called monty_hall which takes two
+# arguments. ndoors represents the number of doors in the
+# experiment while ntrials represents the number of trials
+# in the simulation.
+def monty_hall(ndoors, ntrials):
+    
+    # initialze two variables to keep track of the number of wins
+    switch_wins = 0
+    no_switch_wins = 0
+    
+    # this for loop runs for ntrials
+    for i in range(ntrials):
 
-r = np.arange(0, 2, 0.01)
-theta = 2 * np.pi * r
-fig, ax = plt.subplots(
-  subplot_kw = {'projection': 'polar'} 
-)
-ax.plot(theta, r)
-ax.set_rticks([0.5, 1, 1.5, 2])
-ax.grid(True)
-plt.show()
+        # creates a list containing ndoors from 0 to ndoors-1 doors
+        doors = [i for i in range(ndoors)]
+
+        # randomly chooses one of these ndoors and assigns it to car
+        # this variable will represent the door with the car behind it
+        car = random.choice(doors)
+
+        # randomly chooses one of these ndoors and assigns it to choice 
+        # this variable will represent the door that the contestant initially 
+        # chooses
+        choice = random.choice(doors)
+
+        # checks if the door the contestant initially chose is the door with the
+        # car behind it. If it is, the no-switch strategy wins, otherwise the 
+        # switch strategy wins
+        if choice == car:
+            no_switch_wins += 1
+        else:
+            switch_wins += 1
+    
+    # returns the proportion of wins for switch
+    return switch_wins/ntrials
+
+# stores the percentages in two different variables
+win3 = monty_hall(3, 1000)*100
+win5 = monty_hall(5, 1000)*100
+
+print("When there are three doors, switching the door is the correct choice", win3)
+print("percent of the time and the wrong choice", 100-win3, "percent of the time.\n")
+print("When there are five doors, switching the door is the correct choice", win5)
+print("percent of the time and the wrong choice", 100-win5, "percent of the time.")
 ```
