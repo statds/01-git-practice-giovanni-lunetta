@@ -113,3 +113,46 @@ print("Displayed is the estimate, followed by the 95% confidence interval")
 print("with a sample size of 8000:", monte_carlo_pi(8000))
 ```
 
+# Exercise 5
+Find the first 10-digit prime number occurring in consecutive digits of pi.
+```{python}
+# importing these libraries allows us to use arbitrary-precision decimal 
+# arithmetic and prime numbers
+import decimal
+from sympy import *
+
+# defines the proper function
+def find_10_digit_prime_in_e():
+
+    # sets the precision of the decimal module to 10000, 
+    # meaning that we will be working with 10000 decimal digits of e
+    decimal.getcontext().prec = 10000
+
+    # use the built-in function in python's decimal module to compute
+    #  the value of e and store it in a variable e
+    e = decimal.Decimal(1).exp()
+
+    # convert the value of e to a string
+    e = str(e)
+
+    # remove the decimal point from the string representation of e
+    e = e.replace(".", "")
+
+    # starts a for loop that will run once for each possible starting 
+    # index of a 10-digit sequence in the string e
+    for i in range(len(e) - 10):
+
+        # creates a variable named num that is set 
+        # to the 10-digit sequence
+        # starting at index i of the string e
+        num = int(e[i:i+10])
+
+        # if the number is prime it returns the number
+        if isprime(num):
+            return num
+
+print(find_10_digit_prime_in_e())
+print("Help from:")
+print("https://stackoverflow.com/")
+print("https://math.stackexchange.com/")
+```

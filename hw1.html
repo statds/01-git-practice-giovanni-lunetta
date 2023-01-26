@@ -140,7 +140,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="exercise-3" class="level1">
 <h1>Exercise 3</h1>
 <p>Monty Hall problem through simulation.</p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="6">
+<div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># allows us to generate random numbers and make random selections</span></span>
@@ -192,18 +192,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"percent of the time and the wrong choice"</span>, <span class="dv">100</span><span class="op">-</span>win5, <span class="st">"percent of the time."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>When there are three doors, switching the door is the correct choice 66.10000000000001
-percent of the time and the wrong choice 33.89999999999999 percent of the time.
+<pre><code>When there are three doors, switching the door is the correct choice 66.4
+percent of the time and the wrong choice 33.599999999999994 percent of the time.
 
-When there are five doors, switching the door is the correct choice 80.9
-percent of the time and the wrong choice 19.099999999999994 percent of the time.</code></pre>
+When there are five doors, switching the door is the correct choice 80.0
+percent of the time and the wrong choice 20.0 percent of the time.</code></pre>
 </div>
 </div>
 </section>
 <section id="exercise-4" class="level1">
 <h1>Exercise 4</h1>
 <p>Monte Carlo approximation of pi.</p>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;python&quot;}" data-execution_count="7">
+<div class="cell" data-execution_count="2">
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># allows us to generate random numbers and make random selections</span></span>
@@ -252,13 +252,67 @@ percent of the time and the wrong choice 19.099999999999994 percent of the time.
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Displayed is the estimate, followed by the 95% confidence interval
-with a sample size of 1000: (3.128, (3.0768179483959464, 3.179182051604054))
+with a sample size of 1000: (3.216, (3.1667912733592916, 3.265208726640709))
 Displayed is the estimate, followed by the 95% confidence interval
-with a sample size of 2000: (3.146, (3.1100814023547687, 3.181918597645231))
+with a sample size of 2000: (3.144, (3.108050800109043, 3.1799491998909573))
 Displayed is the estimate, followed by the 95% confidence interval
-with a sample size of 4000: (3.182, (3.157000989467581, 3.206999010532419))
+with a sample size of 4000: (3.099, (3.0731077814797576, 3.124892218520243))
 Displayed is the estimate, followed by the 95% confidence interval
-with a sample size of 8000: (3.17, (3.152227449395205, 3.187772550604795))</code></pre>
+with a sample size of 8000: (3.1535, (3.1355984357698135, 3.171401564230187))</code></pre>
+</div>
+</div>
+</section>
+<section id="exercise-5" class="level1">
+<h1>Exercise 5</h1>
+<p>Find the first 10-digit prime number occurring in consecutive digits of pi.</p>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># importing these libraries allows us to use arbitrary-precision decimal </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># arithmetic and prime numbers</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> decimal</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># defines the proper function</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_10_digit_prime_in_e():</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># sets the precision of the decimal module to 10000, </span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># meaning that we will be working with 10000 decimal digits of e</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    decimal.getcontext().prec <span class="op">=</span> <span class="dv">10000</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># use the built-in function in python's decimal module to compute</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">#  the value of e and store it in a variable e</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    e <span class="op">=</span> decimal.Decimal(<span class="dv">1</span>).exp()</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># convert the value of e to a string</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    e <span class="op">=</span> <span class="bu">str</span>(e)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove the decimal point from the string representation of e</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    e <span class="op">=</span> e.replace(<span class="st">"."</span>, <span class="st">""</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># starts a for loop that will run once for each possible starting </span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># index of a 10-digit sequence in the string e</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(e) <span class="op">-</span> <span class="dv">10</span>):</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># creates a variable named num that is set </span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># to the 10-digit sequence</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>        <span class="co"># starting at index i of the string e</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>        num <span class="op">=</span> <span class="bu">int</span>(e[i:i<span class="op">+</span><span class="dv">10</span>])</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        <span class="co"># if the number is prime it returns the number</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> isprime(num):</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> num</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(find_10_digit_prime_in_e())</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Help from:"</span>)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"https://stackoverflow.com/"</span>)</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"https://math.stackexchange.com/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>7427466391
+Help from:
+https://stackoverflow.com/
+https://math.stackexchange.com/</code></pre>
 </div>
 </div>
 </section>
